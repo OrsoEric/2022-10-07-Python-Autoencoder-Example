@@ -37,11 +37,11 @@ class Autoencoder( Model ):
         self.n_latent_dim = in_latent_dim 
         self.n_image_size = in_image_size
         #Construct the Encoder model
-        self.encoder = Sequential( name=f"Encoder:{in_image_size}x{in_image_size}->{in_latent_dim}" )
+        self.encoder = Sequential( name=f"Encoder>{in_image_size}x{in_image_size}>{in_latent_dim}" )
         self.encoder.add( layers.Flatten() )
         self.encoder.add( layers.Dense(in_latent_dim, activation='relu') )
         #construct the Decoder model
-        self.decoder = Sequential( name=f"Decoder:{in_latent_dim}->{in_image_size}x{in_image_size}" )
+        self.decoder = Sequential( name=f"Decoder>{in_latent_dim}>{in_image_size}x{in_image_size}" )
         self.decoder.add( layers.Dense( in_image_size*in_image_size, activation='sigmoid') )
         self.decoder.add( layers.Reshape((in_image_size, in_image_size)) )
         #compile the model
